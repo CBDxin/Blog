@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{%block main%}
+
+<div class=" view">
+
+    <h1 align="center">{{content.title}}</h1>
+    <input type="hidden" value="{{content._id.toString()}}" id="hidden">
+    <div class="row "  style="margin:50px; text-align: center">
+
+        <div class="writer col-xs-offset-2 col-xs-2">
+            <span>作者：<a>{{content.writer.username}}</a></span>
+        </div>
+        <div class="post-time  col-xs-4">
+            <span>发表时间：{{content.addTime|date('Y年m月d日 H:i:s',-60*8)}}</span>
+        </div>
+        <div class="views col-xs-2">
+            <span>阅读量：{{content.views}}</span>
+        </div>
+    </div>
+
+    <div>{{content.content|raw}}</div>
+
+</div>
+<div class="listbox">
+    {% if userInfo._id %}
+    <h3 class="textLeft">
+        <strong>评论</strong>
+        <small class="em">一共有<span id="com-num"></span>条评论</small>
+    </h3>
+    <p >
+        <textarea name="messageContent"  id="messageContent"  rows="5"></textarea>
+
+    </p>
+    <button class="submit btn btn-default" id="messageBtn">提交</button>
+    {%else %}
+    <p class="bg-danger">你还没有登录，请先<a href="/">登录</a></p>
+    {%endif%}
+
+    <div id="com-footer">
+
+    </div>
+    <nav class="com-fenye">
+        <ul class="pager">
+            <li class="previous"><a href="javascript:;"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            <li class="yeshu"><span class="page"></span>&emsp;/&emsp;<span class="pages"></span></li>
+            <li class="next"><a href="javascript:;">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
+
+
+</div>
+{%endblock%}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/public/css/index.css">
+    <script src="/public/js/jquery-1.12.4.js"></script>
+    <script src="/public/js/bootstrap.js"></script>
+
+
+
+</head>
+<body>
+    <nav class="navbar  navbar-default navbar-fixed-top my-navbar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">首页</a></li>
+            <li class="active"><a href="/pyq">pyq</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    {%for cate in category%}
+                    <li><a href="/?cateName={{cate.name}}&cateId={{cate._id.toString()}}">{{cate.name}}</a></li>
+                    {%endfor%}
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小玩意 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Snake">贪吃蛇</a></li>
+
+                </ul>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </nav>
+    <section class="banner_area">
+        <div class="container">
+            <div class="banner_text_inner">
+                <h4>生 活 就 像 海 洋</h4>
+            </div>
+        </div>
+    </section>
+
+    {%block main%}{%endblock%}
+
+    <div class="jumbotron footer" >
+        <h1>Hello, world!</h1>
+        <p>...</p>
+    </div>
+
+    <script src="/public/js/index.js"></script>
+</body>
+</html>

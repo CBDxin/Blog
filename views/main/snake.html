@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#snake{
+				display: block;
+				border: 1px solid black;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+	<a href="/">回到首页</a>
+		<div class="snakeBox">
+			<canvas id="snake" width="800" height="500"></canvas>
+		</div>
+
+		<script type="text/javascript">
+			var cas = document.getElementById("snake");
+			var ctx = cas.getContext('2d');
+			var sSize = 20;
+			var casX = cas.width/sSize;
+			var casY = cas.height/sSize;
+			var length = 0;
+			var snakebody = [];
+			var dire = 2;
+			var food;
+			var time;
+			
+			function init(){
+				time=100;
+				snakebody = [];
+				dire=2;
+				for (var i= 0;i < 3;i++) {
+					createNode(casX/2+i,parseInt(casY/2));
+					
+				}
+				putFood();
+				drawSnake();
+				
+			}
+			function createNode(x,y){
+				snakebody.push({x:x,y:y,color:(snakebody.length == 0?'#f00':'#000')});
+			
+			}
+			function drawSnake(){
+				ctx.clearRect(0,0,cas.width,cas.height);
+				for (var i=0;i<snakebody.length;i++) {
+					drawRect(snakebody[i]);
+				}
+				drawRect(food);
+			}
+			function drawRect(Node){
+				ctx.beginPath();
+				
+				ctx.fillStyle=Node.color;
+				
+				ctx.fillRect(Node.x*sSize,Node.y*sSize,sSize,sSize);
+				ctx.closePath();
+			}
+			function snakeMove(){
+				direFlag=0;
+				var newNode ={x:snakebody[0].x,y:snakebody[0].y,color:snakebody[0].color};
+				if(dire==1) newNode.y-=1;
+				if(dire==-1) newNode.y+=1;
+				if(dire==2) newNode.x-=1;
+				if(dire==-2) newNode.x+=1;
+				if(newNode.x<0) {
+					newNode.x=casX-1;
+					direFlag=1;
+				}
+				if(newNode.x>casX-1) {
+				
+					newNode.x=0;
+					direFlag=1;
+					
+				}
+				if(newNode.y<0) {
+					newNode.y=casY-1;
+					direFlag=1;
+				}	
+				if(newNode.y>casY-1) {
+					newNode.y=0;
+					direFlag=1;
+				}
+				
+				for (var i=snakebody.length-1;i>0;i--) {
+					snakebody[i].x=snakebody[i-1].x;
+					snakebody[i].y=snakebody[i-1].y;
+					if(snakebody[i].x==newNode.x&&snakebody[i].y==newNode.y){
+						gameOver();
+						return
+					}
+				}
+				snakebody[0]=newNode;
+				isGetFood();
+				drawSnake();
+			}
+			function gameOver(){
+				alert("Game over!!")
+				init();
+			}
+			var direFlag;
+			function setDirection(dir){
+				direFlag = 1;
+				if(Math.abs(dir)==Math.abs(dire)) return;
+				dire=dir;
+			}
+			document.onkeydown=function(e){
+				
+				e.preventDefault();
+				if(direFlag) {
+				
+					return;
+					
+				}
+				if(e.keyCode==38) setDirection(1);
+				if(e.keyCode==40) setDirection(-1);
+				if(e.keyCode==37) setDirection(2);
+				if(e.keyCode==39) setDirection(-2);
+			}
+			function putFood(){
+				var flag=1;
+				while(1){
+					var foodX=parseInt(Math.random()*casX);
+					var foodY=parseInt(Math.random()*casY);
+					for (var i=0;i<snakebody.length;i++) {
+						if(foodX==snakebody[i].x&&foodY==snakebody[i].y){
+							flag=0;
+							break;
+						}
+					}
+					if(flag) break;
+				}
+				food={x:foodX,y:foodY,color:'#ff0'};
+				 
+			}
+			function isGetFood(){
+				if(snakebody[0].x==food.x&&snakebody[0].y==food.y){
+					putFood();
+					snakebody.push({x:snakebody[snakebody.length-1].x,y:snakebody[snakebody.length-1].y,color:'#000'});
+					time--;
+					
+				}
+			}
+			
+			init();
+			var timer = setInterval(function(){
+				snakeMove();
+				drawSnake();
+			},100)
+		</script>
+		
+	</body>
+</html>

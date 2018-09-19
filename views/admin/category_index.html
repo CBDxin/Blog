@@ -1,0 +1,42 @@
+
+{% extends 'layout.html' %}
+{%block main%}
+
+<ol class="breadcrumb" style="background-color: transparent">
+    <li><a href="/admin">管理首页</a></li>
+    <li class="active">分类管理</li>
+</ol>
+<div class="panel panel-default user-index-panel">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h3>分类列表 <small>&nbsp;&nbsp;共有{{count}}种分类</small></h3>
+    </div>
+
+    <!-- Table -->
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>ID</th>
+            <th>分类名称</th>
+            <th>操作</th>
+        </tr>
+        {% for cate in category%}
+        <tr>
+            <th>{{cate._id.toString()}}</th>
+            <th>{{cate.name}}</th>
+            <th>
+                <a href="/admin/category/edit?id={{cate._id.toString()}}" class="edit">修改</a>/
+                <a href="/admin/category/delete?id={{cate._id.toString()}}" class="delete">删除</a>
+            </th>
+        </tr>
+        {%endfor%}
+    </table>
+
+</div>
+<nav class="user-fenye">
+    <ul class="pager">
+        <li class="previous"><a href="/admin/category?page={{page-1}}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+        <li class="yeshu">{{page}}/{{pages}}</li>
+        <li class="next"><a href="/admin/category?page={{page+1}}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+{%endblock%}

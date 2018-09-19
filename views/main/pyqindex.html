@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+{%block main%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 content">
+
+            {%for content in content%}
+            <div class="blog-content">
+                <div class="row">
+
+                    <div class="writer col-xs-offset-2 col-xs-2">
+                        <span>作者：<a>{{content.writer.username}}</a></span>
+                    </div>
+                    <div class="post-time col-xs-4">
+                        <span>发表时间：{{content.addTime|date('Y年m月d日 H:i:s',-60*8)}}</span>
+                    </div>
+                    <div class="views col-xs-2">
+                        <span>阅读量：{{content.views}}</span>
+                    </div>
+                </div>
+                <p>{{content.content}}</p>
+
+            </div>
+            {%endfor%}
+            <nav class="user-fenye">
+                <ul class="pager">
+                    <li class="previous"><a href="/?cateName={{cateName}}&cateId={{cateId}}&page={{page-1}}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+                    <li class="yeshu">{{page}}/{{pages}}</li>
+                    <li class="next"><a href="/?cateName={{cateName}}&cateId={{cateId}}&page={{page+1}}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="col-xs-6 col-md-4 admin">
+            {% if userInfo._id %}
+            <div class="user-info">
+                <div class="page-header">
+                    <h1>
+                        Welcome
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{userInfo.username}} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% if userInfo.isAdmin %}
+                                <li><a href="/admin" class="in-admin">进入管理页面</a></li>
+                                {% endif %}
+                                <li><a href="/content" class="put-blog ">发表博文</a></li>
+                                <li><a href="/putpyq" class="put-pyq ">pyq</a></li>
+                                <li><a href="javascript:;" class="logout ">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </h1>
+                </div>
+
+
+            </div>
+
+            {% else %}
+            <form class="login-box">
+                <div class="page-header">
+                    <h1>登录</h1>
+                </div>
+                <div class="form-group">
+                    <label >用户名</label>
+                    <input type="text" class="form-control username" name="username" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <label >密码</label>
+                    <input type="password" class="form-control password" name="password"  placeholder="请输入密码">
+                </div>
+                <div class="warning-word"></div>
+                <div class="succee-word"></div>
+
+                <button type="button" class="btn btn-default">登录</button>
+                <a class="rs" href="javascript:;">还没账号？马上注册>></a>
+            </form>
+            <form class="register-box" >
+                <div class="page-header">
+                    <h1>注册</h1>
+                </div>
+                <div class="form-group">
+                    <label >用户名</label>
+                    <input type="text" class="form-control username" name="username" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <label >密码</label>
+                    <input type="password" class="form-control password" name="password" placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                    <label >确认密码</label>
+                    <input type="password" class="form-control repassword" name="repassword" placeholder="请再次输入密码">
+                </div>
+                <div class="warning-word"></div>
+                <div class="succee-word"></div>
+                <button type="button" class="btn btn-default">注册</button>
+                <a class="lg" href="javascript:;">登录</a>
+            </form >
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{%endblock%}
