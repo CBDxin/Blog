@@ -1,0 +1,44 @@
+body{
+    background-color: ghostwhite;
+}
+.navbar{
+    border-radius: 0;
+    padding: 0 20px;
+    color:white;
+    box-shadow: 2px 5px 10px rgba(119,119,119,.3)
+}
+/*.navbar .navbar-nav > li > a{
+    color: white;
+}
+.navbar .navbar-nav > li > a:hover{
+    color: #2bc0a4;
+}*/
+.jumu{
+    margin-top: 50px;
+    height: 450px;
+    box-shadow: 2px 5px 20px rgba(119,119,119,.3)
+}
+.user-index-panel{
+    width: 90%;
+    margin: 0 auto;
+}
+.user-index-panel tr{
+    display: flex;
+}
+.user-index-panel th{
+    flex: 1;
+    text-align: center;
+}
+.user-fenye{
+    width: 90%;
+    margin: 0 auto;
+}
+.user-index-panel .panel-heading h3{
+    margin: 6px;
+}
+.category-add .form-control{
+    width: 50%;
+}
+.category-add form{
+    margin-top: 60px;
+}

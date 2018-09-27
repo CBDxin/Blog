@@ -1,0 +1,141 @@
+body {
+    line-height: 26px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+.register-box{
+    display: none;
+}
+.my-navbar{
+    padding: 0 50px;
+    border-radius: 0;
+    background: rgba(4, 8, 29, 0.7);
+    color:white;
+}
+.navbar-default .navbar-nav > .active > a
+{
+    background: none;
+    color: white;
+}
+.navbar-default .navbar-nav > .active > a:hover{
+    background: none;
+    color: #2bc0a4;
+}
+.become-black{
+    background:rgba(4, 8, 29, 0.9);
+}
+.navbar-default .navbar-nav > li > a:focus{
+    color: white;
+}
+.navbar-default .navbar-nav > li > a{
+    color: white;
+}
+.navbar-default .navbar-nav > li > a:hover{
+    color: #2bc0a4;
+}
+.footer{
+    margin-bottom: 0;
+    background: rgba(4, 8, 29, 0.7);
+    margin-top: 50px;
+    padding: auto 50px;
+}
+.blog-content{
+    padding: 10px 20px;
+    margin: 20px 0;
+    box-shadow: 2px 5px 5px rgba(119,119,119,.3)
+}
+.banner_area{
+    background: url("./../img/233.jpg") no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+    min-height: 400px;
+    margin-bottom: 30px;
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.banner_text_inner {
+    text-align: center;
+    position: relative;
+    padding-top: 200px;
+}
+.banner_text_inner h4 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    padding-bottom: 10px;
+}
+.banner_area:before {
+    content: "";
+    background: rgba(4, 8, 29, 0.5);
+    position: absolute;
+    left: 0px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.admin .rs ,.admin .lg{
+    float: right;
+    padding-right: 10px;
+}
+.warning-word{
+    color: red;
+    padding-bottom: 10px;
+}
+.succee-word{
+    color: blue;
+    padding-bottom: 10px;
+}
+
+.blog-content .title a:hover{
+    color: #2aabd2;
+
+}
+.blog-content .title a{
+    text-decoration: none;
+}
+.btn-default{
+    background-image: none;
+}
+.blog-content-add .col-sm-10{
+    margin-bottom: 20px;
+    padding-right: 50px;
+}
+.view{
+    padding: 50px 10%;
+    margin: 0 auto;
+}
+
+#messageContent{
+    width: 100%;
+    margin: 0 auto;
+}
+.listbox{
+    margin: 0 auto;
+    width: 80%;
+}
+.listbox .bg-danger{
+    line-height: 50px;
+    text-align: center;
+    width: 50%;
+    color: white;
+    margin: 0 auto;
+    background-color: #ff0712;
+}
+.listbox .right{
+    float: right;
+}
+.w60{
+    width: 80%;
+}
+#com-footer h4{
+    padding-left: 2em;
+}
